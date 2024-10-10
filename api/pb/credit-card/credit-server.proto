@@ -1,0 +1,17 @@
+syntax="proto3";
+import "google/protobuf/any.proto";
+option go_package="github.com/rubberduckkk/credit-card/api/pb/credit-card";
+
+service CreditCard {
+  rpc Validate(Card) returns(Status);
+}
+
+message Status {
+  int32 code = 1;
+  string message = 2;
+  repeated google.protobuf.Any detailed = 3;
+}
+
+message Card {
+  string number = 1;
+}
